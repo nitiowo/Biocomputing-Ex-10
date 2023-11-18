@@ -1,8 +1,10 @@
 #Tutorial 12 Submission
 
 #Exercise 1
-#Import Data
+#Import Data and Libraries
 scores <- read.table("C:/Users/grace/Desktop/Biocomputing 2023/R/Tutorials/Biocomputing-Ex-10/UWvMSU_1-22-13.txt")
+library(ggplot2)
+library(cowplot)
 #Generate dataframe for the cumulative scores
 time <- c(0)
 UWScore <- c(0)
@@ -23,5 +25,13 @@ for(i in 2:nrow(scores)){
     cumulativeScores$MSUScore[i] <- cumulativeScores$MSU[i-1] + as.numeric(scores$V3[i])
   }
 }
+#Make the graph
+ggplot(data = cumulativeScores,
+       aes(x=order(Time),y=UWScore)) +
+  geom_point() +
+  geom_step() +
+  xlab("Time (minutes)") +
+  ylab("Points") +
+  theme_classic()
 
 #Exercise 2
