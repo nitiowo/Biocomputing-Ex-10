@@ -27,12 +27,14 @@ for(i in 2:nrow(scores)){
 }
 #Make the graph
 ggplot(data = cumulativeScores,
-       aes(order(Time),UWScore)) +
+       aes(order(Time),UWScore,fill,color="UW Score")) +
   geom_line(data = cumulativeScores,
-         aes(order(Time),MSUScore,color="blue")) +
+         aes(order(Time),MSUScore,color="MSU Score")) +
   geom_line() +
   xlab("Time (minutes)") +
   ylab("Points") +
   theme_classic()
 
 #Exercise 2
+number <- sample(c(1:100),1) #Generate the random number on [1,100]
+guess <- as.numeric(readline(prompt="Guess a number: ")) #Obtain user input
