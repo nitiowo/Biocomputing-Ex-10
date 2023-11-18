@@ -16,19 +16,20 @@ colnames(cumulativeScores) <- c("Time","UWScore","MSUScore")
 #For loop
 for(i in 2:nrow(scores)){
   if(scores$V2[i]=="UW"){
-    cumulativeScores$Time[i] <- scores$V1[i]
+    cumulativeScores$Time[i] <- as.numeric(scores$V1[i])
     cumulativeScores$UWScore[i] <- cumulativeScores$UWScore[i-1] + as.numeric(scores$V3[i])
     cumulativeScores$MSUScore[i] <- cumulativeScores$MSUScore[i-1]
   }else{
-    cumulativeScores$Time[i] <- scores$V1[i]
+    cumulativeScores$Time[i] <- as.numeric(scores$V1[i])
     cumulativeScores$UWScore[i] <- cumulativeScores$UWScore[i-1]
     cumulativeScores$MSUScore[i] <- cumulativeScores$MSU[i-1] + as.numeric(scores$V3[i])
   }
 }
 #Make the graph
 ggplot(data = cumulativeScores,
-       aes(x=order(Time),y=UWScore)) +
-  geom_point() +
+       aes(order(Time),UWScore)) +
+  geom_line(data = cumulativeScores,
+         aes(order(Time),MSUScore,color="blue")) +
   geom_line() +
   xlab("Time (minutes)") +
   ylab("Points") +
