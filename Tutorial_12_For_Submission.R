@@ -37,4 +37,14 @@ ggplot(data = cumulativeScores,
 
 #Exercise 2
 number <- sample(c(1:100),1) #Generate the random number on [1,100]
-guess <- as.numeric(readline(prompt="Guess a number: ")) #Obtain user input
+for(i in 1:1000){
+  guess <- as.numeric(readline(prompt="Guess a number: ")) #Obtain user input
+  if(guess==number){
+    print("Correct!")
+    break #found in the for loop manual (from ?for, then press enter twice)
+  }else if(guess<number){
+    print("The number is higher than your guess.")
+  }else{
+    print("The number is lower than your guess.")
+  }
+}
