@@ -29,7 +29,7 @@ for(i in 2:nrow(scores)){
 ggplot(data = cumulativeScores,
        aes(x=order(Time),y=UWScore)) +
   geom_point() +
-  geom_step() +
+  geom_line() +
   xlab("Time (minutes)") +
   ylab("Points") +
   theme_classic()
