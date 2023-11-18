@@ -13,10 +13,10 @@ cumulativeScores <- data.frame(time,UWScore,MSUScore)
 #For loop
 for(i in 2:nrow(scores)){
   if(scores$V2[i]=="UW"){
-    UWCurrentScore <- UWCurrentScore + scores$V3[i]
+    UWCurrentScore <- UWCurrentScore + as.numeric(scores$V3[i])
     cumulativeScores[i] <- c(scores$V1[i],UWCurrentScore,MSUCurrentScore)
   }else{
-    MSUCurrentScore <- MSUCurrentScore + scores$V3[i]
+    MSUCurrentScore <- MSUCurrentScore + as.numeric(scores$V3[i])
     cumulativeScores[i] <- c(scores$V1[i],UWCurrentScore,MSUCurrentScore)
   }
 }
