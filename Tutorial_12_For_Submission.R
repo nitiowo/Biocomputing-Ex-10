@@ -7,14 +7,17 @@ scores <- read.table("C:/Users/grace/Desktop/Biocomputing 2023/R/Tutorials/Bioco
 time <- c(0)
 UWScore <- c(0)
 MSUScore <- c(0)
+UWCurrentScore <- 0
+MSUCurrentScore <- 0
 cumulativeScores <- data.frame(time,UWScore,MSUScore)
 #For loop
 for(i in 2:nrow(scores)){
   if(scores$V2[i]=="UW"){
-    print(scores$V3[i])
-  }
-  else{
-    print(scores$V3[i])
+    UWCurrentScore <- UWCurrentScore + scores$V3[i]
+    cumulativeScores[i] <- c(scores$V1[i],UWCurrentScore,MSUCurrentScore)
+  }else{
+    MSUCurrentScore <- MSUCurrentScore + scores$V3[i]
+    cumulativeScores[i] <- c(scores$V1[i],UWCurrentScore,MSUCurrentScore)
   }
 }
 
