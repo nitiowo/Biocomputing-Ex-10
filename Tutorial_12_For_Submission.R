@@ -37,6 +37,7 @@ ggplot(data = cumulativeScores,
 
 #Exercise 2
 number <- sample(c(1:100),1) #Generate the random number on [1,100]
+print("I'm thinking of an integer from 1 to 100. Please try to guess what it is.")
 for(i in 1:1000){
   guess <- as.numeric(readline(prompt="Guess a number: ")) #Obtain user input
   if(guess==number){
