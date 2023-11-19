@@ -1,3 +1,14 @@
+#### part 1 ----
+
+# read in data
+game <- read.table("UWvMSU_1-22-13.txt", sep = "\t", header = TRUE)
+# create data frame for just msu
+msu <- game[game$team == "MSU", ]
+# create data frame for just uw
+uw <- game[game$team == "UW", ]
+
+
+
 #### part 2 ----
 
 print("I'm thinking of a number between 1-100...", quote = FALSE)
