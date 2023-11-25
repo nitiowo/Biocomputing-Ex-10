@@ -25,16 +25,16 @@ for (i in 1:nrow(scores)){
   }
 }
 #plots the scores over time for each team
-ggplot(scores, aes(x = time, y = score, color = team) +
+ggplot(scores, aes(x = time, y = score, color = team)) +
   geom_line() +
   labs(title = "Scores Over Time",
        x = "Time",
        y = "Score") +
-  scale_color_manual(values = c("UW" = "red", "MSU" = "blue")) +
+  scale_color_manual(values = c("UW" = "red", "MSU" = "darkgreen")) +
   scale_linetype_manual(values = c("UW" = "solid", "MSU" = "solid"))
 
 #Question 2
-#gunction selects a random number between 1 and 100
+#function selects a random number between 1 and 100
 number <- sample(c(1,100),1)
 print("I am thinking of a number between 1 and 100...You have 10 tries to guess!")
 
