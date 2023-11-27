@@ -44,3 +44,29 @@ ggplot(score,aes(x=game.time))+
   geom_line(aes(y=msuscore),color="green")+
   ylab("Score")+
   xlab("Time(mins)")
+
+#Question 2
+
+#sample a random number
+num <- as.numeric(sample(1:100,1))
+#10 guesses until the game is over
+for(i in 1:10){
+  #if guess number is 10, game over
+  if(i==10){
+    print(paste('Game over! Ran out of guesses. The correct answer was:',num,sep=' '))
+    break
+    #if guess is lower than guess 10, prompt for the user guess
+  }else{
+    guess <- as.numeric(readline('Guess: '))
+  }
+  #correct guess  
+  if(guess == num){
+    print("Correct!")
+    #guess too high
+  }else if(guess>num){
+    print('Lower')
+    #guess too low
+  }else{
+    print('Higher')
+  } 
+}    
