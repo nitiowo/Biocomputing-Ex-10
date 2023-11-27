@@ -32,8 +32,12 @@ for(i in 1:length(msu$score)){
 for(i in 1:length(uw$score)){
   uwscore[i] <- sum(uw$score[1:i])
 }
+
 ##combine with times
 score <- data.frame(game$time,uwscore,msuscore)
+##add zero to the beginning of the scores
+init <- c(0,0,0)
+score <- rbind(init,score)
 ##plot each dataset
 ggplot(score,aes(x=game.time))+
   geom_line(aes(y=uwscore),color="red")+
