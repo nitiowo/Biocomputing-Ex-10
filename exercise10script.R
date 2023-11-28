@@ -25,7 +25,34 @@ for (i in 1:nrow(data)) {
 }
 
 # Plotting the Line Graph
-plot(data$time, UW_cumulative, type = "l", col = "red", ylim = c(0, max(UW_cumulative, MSU_cumulative)), xlab = "Time (minutes)", ylab = "Score", main = "University of Wisconsin vs Michigan State University")
+plot(data$time, UW_cumulative, type = "l", col = "darkred", ylim = c(0, max(UW_cumulative, MSU_cumulative)), xlab = "Time (minutes)", ylab = "Score", main = "University of Wisconsin vs Michigan State University")
 lines(data$time, MSU_cumulative, col = "darkgreen")
-legend("bottomright", legend = c("Univeristy of Wisconsin", "Michigan State University"), col = c("red", "darkgreen"), lty = 1)
+legend("bottomright", legend = c("Univeristy of Wisconsin", "Michigan State University"), col = c("darkred", "darkgreen"), lty = 1)
 
+# Part 2
+
+# Generate a random number between 1 and 100
+secret_number <- sample(1:100, 1)
+
+cat("I'm thinking of a number 1-100...\n")
+
+# Allow up to 10 guesses
+for (attempt in 1:10) {
+  cat("Guess: ")
+  guess <- as.integer(readline())
+  
+  # Check if the guess is correct, too high, or too low
+  if (guess == secret_number) {
+    cat("Correct!\n")
+    break
+  } else if (guess < secret_number) {
+    cat("Higher\n")
+  } else {
+    cat("Lower\n")
+  }
+  
+  # If this was the last attempt
+  if (attempt == 10) {
+    cat(sprintf("You have reached the maximum number of attempts. The number was %d.\n", secret_number))
+  }
+}
