@@ -64,10 +64,9 @@ scores
 
 
 ggplot(scores, aes(x = Time)) +
-     geom_line(aes(y = MSU), size = 2, color = "darkgreen") +
-     geom_line(aes(y = UW), size = 2, color = "purple") +
-     xlab("1st") +
+     geom_line(aes(y = MSU), linewidth = 2, color = "darkgreen") +
+     geom_line(aes(y = UW), linewidth = 2, color = "purple") +
+     xlab("Time (min)") +
      ylab("Score") +
-     scale_x_continuous(expand = c(0,0), limits = c(0,NA)) +
-     scale_y_continuous(expand = c(0,0), limits = c(0,NA)) +
-     theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+     theme(axis.ticks.x = element_blank())
+
