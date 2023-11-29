@@ -35,7 +35,7 @@ ggplot(scores, aes(x = time, y = score, color = team)) +
 
 #Question 2
 #function selects a random number between 1 and 100
-number <- sample(c(1,100),1)
+number <- sample(1:100,1)
 print("I am thinking of a number between 1 and 100...You have 10 tries to guess!")
 
 #for loop that iterates through until number correctly guessed or once iterated through 10 times
