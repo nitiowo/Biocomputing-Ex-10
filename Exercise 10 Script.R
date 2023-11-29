@@ -13,11 +13,11 @@ gameFlow <- data.frame(Time=gameData$time, UW_Score<-0, MSU_Score<-0)
 #makes a data frame containing columns for time, UW score, and MSU score
 #this will be filled by our for loop:
 
-for(i in 1:length(gameFlow$Time)){
+for(i in 1:5){
   if(gameData$team[i]=="UW"){
-    gameFlow$UW_Score[i] <- UW_Score+gameData$score[i]
+    gameFlow$UW_Score[i] <- gameFlow$UW_Score+gameData$score[i]
   } else {
-    gameFlow$MSU_Score[i] <- MSU_Score+gameData$score[i]
+    gameFlow$MSU_Score[i] <- gameFlow$MSU_Score+gameData$score[i]
   }}
 
 
