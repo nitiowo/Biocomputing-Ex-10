@@ -7,7 +7,12 @@ setwd("~/Desktop/Exercise_10")
 gameData <- read.table("UWvMSU_1-22-13.txt", header=TRUE, sep="\t")
 #loads the UW vs MSU game into a data frame with columns for time, team, and points scored
 
+
 #Question 1
+gameFlow <- data.frame(Time=gameData$time, UW_Score=0, MSU_Score=0)
+#makes a data frame containing columns for time, UW score, and MSU score
+#this will be filled by our for loop:
+
 
 #Question 2: Guess a number
 myNum <- as.numeric(sample(100,1))
