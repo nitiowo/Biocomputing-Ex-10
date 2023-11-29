@@ -9,9 +9,16 @@ gameData <- read.table("UWvMSU_1-22-13.txt", header=TRUE, sep="\t")
 
 
 #Question 1
-gameFlow <- data.frame(Time=gameData$time, UW_Score=0, MSU_Score=0)
+gameFlow <- data.frame(Time=gameData$time, UW_Score<-0, MSU_Score<-0)
 #makes a data frame containing columns for time, UW score, and MSU score
 #this will be filled by our for loop:
+
+for(i in 1:length(gameFlow$Time)){
+  if(gameData$team[i]=="UW"){
+    gameFlow$UW_Score[i] <- UW_Score+gameData$score[i]
+  } else {
+    gameFlow$MSU_Score[i] <- MSU_Score+gameData$score[i]
+  }}
 
 
 #Question 2: Guess a number
