@@ -2,6 +2,11 @@
 #Biocomputing Exercise 10, 11/29/23
 
 #Setting up the exercise
+setwd("~/Desktop/Exercise_10")
+#navigates R to the Exercise_10 directory where my files are stored
+gameData <- read.table("UWvMSU_1-22-13.txt", header=TRUE, sep="\t")
+#loads the UW vs MSU game into a data frame with columns for time, team, and points scored
+
 #Question 1
 
 #Question 2: Guess a number
