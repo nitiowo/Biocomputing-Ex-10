@@ -20,3 +20,7 @@ for (i in 1:nrow(info)) {
   UW-cum[i] <- UW_score
   MSU-cum[i] <- MSU_score
 }
+#Plot Line Graph
+plot(info$time, UW-cum, type = "l", col = "red", ylim = c(0, max(UW_cum, MSU_cum)), xlab = "Time (min)", ylab = "Score", main = "Wisconsin vs MSU")
+lines(info$time, MSU_cum, col = "darkgreen")
+legend("bottomright", legend = c("University of Wisconsin", "MSU"), col = c("red", "darkgreen"), lty =1)
