@@ -1,0 +1,68 @@
+# Exercise 10
+# 2023-11-28
+
+# set work directory and read data files
+setwd("C:\\Users\\debit\\Downloads\\Exercise10")
+
+# install required packages 
+install.packages("ggplot2")
+library(ggplot)
+
+# question 1: line graph depicting the cumulative score for each team as a function of time in the 
+game
+# read data file
+game_data <- read.delim("UWvMSU_1-22-13.txt")
+
+# subset data by team 
+game_data_MSU <- subset(game_data, team == "MSU")
+game_data_UW <- subset(game_data, team == "UW")
+
+# create empty output column for cumulative score 
+cs_MSU <- numeric(nrow(game_data_MSU)) 
+cs_UW <- numeric(nrow(game_data_UW)) 
+
+# for loop to create a cumulative score for each team 
+for (i in 1:nrow(game_data_MSU)){
+  cs_MSU[i] <- sum(game_data_MSU$score[1:i])
+  cs_UW[i] <- sum(game_data_UW$score[1:i])
+}
+
+# remove NA from the data frame
+cs_UW <- na.omit(cs_UW)
+
+# create a line graph using ggplot
+line_graph <- ggplot() + 
+  geom_line(data = game_data_MSU, mapping = aes(x=time, y=cs_MSU), color = "blue", size = 1.2) +
+  geom_line(data = game_data_UW, mapping = aes(x=time, y=cs_UW), color = "green", size = 1.2) +
+  theme_bw() +
+  labs(title = " Cumulative Score Over Time", x = "Time", y = "Cumulative Score")
+line_graph
+
+# question 2: Game "guess my number" 
+# generate and sampling a random number between 1 and 100
+random_number <- sample(1:100, 1)
+attempts <- 0
+
+# guessing number up to 10 times
+while(attempts < 10){
+    guess <- as.numeric(readline("Enter guess number (between 1 and 100: "))
+    if(is.na(guess) || guess < 1 || guess > 100) {
+      cat("Enter a valid number between 1 and 100.\n")
+      next
+    }
+    
+    if(guess == random_number){
+      cat("Correct!")
+      break
+    }else if (guess < random_number){
+      cat("Higher!")
+    }else{
+      cat("Lower!")
+    } 
+    
+    attempts <- attempts + 1
+    }
+
+  if(attempts == 10) {
+    cat("Out of attempts. The correct number was:", random_number, "\n")
+  }
