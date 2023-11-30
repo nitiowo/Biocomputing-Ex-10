@@ -63,7 +63,9 @@ for (i in 1:10){
     print ("higher!")
   }else if (guess == random_number){
     print ("correct!")
-  }else if (i ==10){
+  }
+  if (i ==10){
     print ("Sorry, too many guesses. Try again later!")
   }
+}
 
