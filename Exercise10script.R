@@ -8,7 +8,7 @@ info <- read.table("UwvMSU_1-22-13.txt", header=TRUE, sep = "\t")
 #Part 1; need cumulative score variables, and create vectors for these scores
 UW_score <- 0
 MSU_score <- 0
-UW-cum <- numeric(length = nrow(info))
+UW_cum <- numeric(length = nrow(info))
 MSU_cum <- numeric(length = nrow(info))
 
 #Calculate the cumulative scores
@@ -17,11 +17,11 @@ for (i in 1:nrow(info)) {
     UW_score <- UW_score + info$score[i] }
   else {
     MSU_score <- MSU_score + info$score[i] }
-  UW-cum[i] <- UW_score
-  MSU-cum[i] <- MSU_score
+  UW_cum[i] <- UW_score
+  MSU_cum[i] <- MSU_score
 }
 #Plot Line Graph
-plot(info$time, UW-cum, type = "l", col = "red", ylim = c(0, max(UW_cum, MSU_cum)), xlab = "Time (min)", ylab = "Score", main = "Wisconsin vs MSU")
+plot(info$time, UW_cum, type = "l", col = "red", ylim = c(0, max(UW_cum, MSU_cum)), xlab = "Time (min)", ylab = "Score", main = "Wisconsin vs MSU")
 lines(info$time, MSU_cum, col = "darkgreen")
 legend("bottomright", legend = c("University of Wisconsin", "MSU"), col = c("red", "darkgreen"), lty =1)
 
