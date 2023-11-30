@@ -34,6 +34,7 @@ for(i in 1:nrow(MSUscores)){
 library(ggplot2)
 
 #create lineplot with time on x axis and cumulative score on y axis
+##there should be 2 lines representing each team separately
 ggplot(data=UWscores,
        aes(time,cumscore)) + 
   geom_line()+ 
@@ -48,13 +49,18 @@ numbers<-c(1:100)
 random<-sample(numbers,1)
 #Prompts user to enter a number and then user enters a number
 guess<-readline(prompt = "I'm thinking of a number 1-100...")
-#Computer determines whether number is higher or lower and use if else statement to generate a response
-if(guess<=random){
-  if(guess<random){
-    print("Higher")
+#Create a vector 1:10 to allocate guesses to user
+chances<-c(1:10)
+##For loop to loop through guessing and outputs, 
+for(i in 1:10){
+  guess<-readline(prompt = "I'm thinking of a number 1-100...")
+  if(guess<=random){
+    if(guess<random){
+      print("Higher")
+    }else{
+      print("Correct!")
+    }
   }else{
-    print("Correct!")
+    print("Lower")
   }
-}else{
-  print("Lower")
 }
