@@ -57,6 +57,7 @@ for(i in 1:10){
       print("Higher")
     }else{
       print("Correct!")
+      break
     }
   }else{
     print("Lower")
