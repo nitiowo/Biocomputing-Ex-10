@@ -1,0 +1,32 @@
+# Step 1: Read integers from the file and store them in a vector
+integers <- scan("findRuns.txt")
+
+# Step 2: Initialize variables to store the index and length of runs
+run_start_index <- NULL
+current_run_length <- 1
+
+# Step 3: Iterate through the vector using a for loop
+for (i in 2:length(integers)) {
+  # Step 4: Check if the current integer is the same as the previous one
+  if (integers[i] == integers[i - 1]) {
+    # If it is the start of a new run, update the run_start_index
+    if (current_run_length == 1) {
+      run_start_index <- i - 1
+    }
+    # Increment the length of the current run
+    current_run_length <- current_run_length + 1
+  } else {
+    # If the current integer is different, print the run information if any
+    if (current_run_length > 1) {
+      cat("Run starting at index", run_start_index, "length:", current_run_length, "\n")
+    }
+    # Reset variables for the next run
+    run_start_index <- NULL
+    current_run_length <- 1
+  }
+}
+
+# Step 5: Print the last run if it exists
+if (current_run_length > 1) {
+  cat("Run starting at index", run_start_index, "length:", current_run_length, "\n")
+}
