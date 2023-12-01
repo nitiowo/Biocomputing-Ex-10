@@ -21,6 +21,30 @@ for(i in 1:nrow(gamesummary)){{
 #plotting graph
 library(ggplot2)
 library(cowplot)
-plot(gamesummary$time, cumulativeUW, type = "l", col = "red", ylim = c(0, max(cumulativeUW, cumulativeMSU)), xlab = "Time", ylab = "Score", main = "Wisconsin vs MSU")
-lines(gamesummary$time, cumulativeMSU, col = "darkgreen")
-legend("bottomright", legend = c("University of Wisconsin", "MSU"), col = c("red", "darkgreen"), lty =1)
+gametimes<-gamesummary$time
+plot(gametimes, cumulativeUW, type = "l", col="blue", ylim = c(0, max(cumulativeUW, cumulativeMSU)), xlab= "Time", ylab = "Score", main = "UW vs. MSU")
+lines(gametimes, cumulativeMSU, col = "green")+
+  legend = c("University of Wisconsin", "MSU"), col = c("blue", "green"), lty =1
+
+#Problem 2: Guessing the number game
+guessmynumber<-function() {
+  random<-sample(1:100,1)
+  guesslimit<-10
+  for (attempt in 1:guesslimit){
+    guess<-as.numeric(readline("Take a guess:"))
+    if (guess==random){
+      cat("Correct!")
+      break}
+    else {
+      if (guess<random){
+        cat("Higher")
+      } else {
+        cat("Lower")
+      }
+    }
+    if (attempt==guesslimit){
+      cat("Sorry, you have failed.")
+    }
+  }
+}
+guessmynumber()
