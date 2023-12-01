@@ -7,6 +7,7 @@ msu <- game[game$team == "MSU", ]
 # create data frame for just uw
 uw <- game[game$team == "UW", ]
 
+# just msu
 # create a column with the running total score
 msu$runningtotal = NA
 # fill the first running total cell with first score
@@ -15,6 +16,17 @@ msu$runningtotal[1] = msu$score[1]
 # the previous running total
 for (i in (2:27)) {
   msu$runningtotal[i] = msu$score[i] + msu$runningtotal[i - 1]
+}
+
+# repeat process above for uw
+# create a column with the running total score
+uw$runningtotal = NA
+# fill the first running total cell with first score
+uw$runningtotal[1] = uw$score[1]
+# for the following columns, fill the each running total cell with the score +
+# the previous running total
+for (i in (2:23)) {
+  uw$runningtotal[i] = uw$score[i] + uw$runningtotal[i - 1]
 }
 
 #### part 2 ----
