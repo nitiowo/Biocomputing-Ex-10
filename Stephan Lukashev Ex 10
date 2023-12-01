@@ -30,3 +30,6 @@ for (i in 2:length(integers)) {
 if (current_run_length > 1) {
   cat("Run starting at index", run_start_index, "length:", current_run_length, "\n")
 }
+
+
+#Stephan Lukashev
