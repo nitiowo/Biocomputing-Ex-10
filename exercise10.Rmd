@@ -1,0 +1,75 @@
+---
+title: "exercise10!"
+output: html_document
+date: "2023-12-01"
+---
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+```
+
+
+```{r}
+
+data<- read.table("UWvMSU_1-22-13.txt", header = TRUE)
+
+data
+```
+
+```{r}
+
+data['UW'] <- 0
+data['MSU'] <- 0
+
+data$UW[1] = data$score[1]
+
+for (i in 2:length(data$score)) {
+  if (data$team[i] == "UW") {
+    data$UW[i] <- ((data$UW[i-1])+data$score[i])
+  } else {
+    data$UW[i] <- ((data$UW[i-1]))
+  }
+  if (data$team[i] == "MSU") {
+    data$MSU[i] <- ((data$MSU[i-1])+data$score[i])
+  } else {
+    data$MSU[i] <- ((data$MSU[i-1]))
+  }
+}
+```
+
+```{r}
+#plotting the graph
+
+ggplot(data, aes(x=time)) +
+geom_line(aes(y=UW), color='blue', linewidth=1.5) +
+geom_line(aes(y=MSU), color='pink', linewidth=1.5) +
+labs(title='Scores Over Time', x='Time', y='Total Score')
+
+```
+
+```{r}
+#Question 2: guessing game
+
+
+  number <- sample(1:100, 1)
+  total <- 10
+  print("I'm thinking of a number 1-100...")
+
+  for (i in 1:total) {
+    guess <- as.integer(readline(prompt = "Enter your guess: "))
+    if (guess == number) {
+      print("Correct!")
+      break
+    } else if (guess < number) {
+      print("Higher")
+    } else {
+      print("Lower")
+    }
+  }
+
+
+``` 
+
