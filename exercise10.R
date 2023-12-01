@@ -43,6 +43,9 @@ ggplot()+
   geom_line(data = uw_merged, aes(x=time, y=score), color = 'red')+
   labs(title = "Cummulative Scores of MSU and UW vs Time", x = "Time", y = "Score") +
     theme_minimal()
+
+
+
 ##2: Guess My Number
 
 randint <- sample(1:100,1)
