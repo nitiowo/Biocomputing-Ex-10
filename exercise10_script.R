@@ -9,25 +9,39 @@ uw <- game[game$team == "UW", ]
 
 # just msu
 # create a column with the running total score
-msu$runningtotal = NA
+msu$cumulative = NA
 # fill the first running total cell with first score
-msu$runningtotal[1] = msu$score[1]
+msu$cumulative[1] = msu$score[1]
 # for the following columns, fill the each running total cell with the score +
 # the previous running total
 for (i in (2:27)) {
-  msu$runningtotal[i] = msu$score[i] + msu$runningtotal[i - 1]
+  msu$cumulative[i] = msu$score[i] + msu$cumulative[i - 1]
 }
 
 # repeat process above for uw
 # create a column with the running total score
-uw$runningtotal = NA
+uw$cumulative = NA
 # fill the first running total cell with first score
-uw$runningtotal[1] = uw$score[1]
+uw$cumulative[1] = uw$score[1]
 # for the following columns, fill the each running total cell with the score +
 # the previous running total
 for (i in (2:23)) {
-  uw$runningtotal[i] = uw$score[i] + uw$runningtotal[i - 1]
+  uw$cumulative[i] = uw$score[i] + uw$cumulative[i - 1]
 }
+
+# combine msu and uw dataframes back into a single dataframe
+game_cumulative = rbind(msu, uw)
+
+## create summary plot
+# load tidyverse
+library(tidyverse)
+# plot data
+ggplot(data = game_cumulative, aes(x = time, y = cumulative, color = team)) +
+  geom_line(size = 1) +
+  theme_classic() +
+  ylab("Cumulative Score") +
+  scale_x_discrete("Quarter", limits = c(10, 20, 30, 40),
+                   labels = c("First", "Second", "Third", "Fourth"))
 
 #### part 2 ----
 
