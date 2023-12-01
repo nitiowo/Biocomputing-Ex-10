@@ -39,8 +39,8 @@ msu_merged <- merge(data.frame(time=df$time), msu_cum, by = "time", all.time = T
 uw_merged <- merge(data.frame(time=df$time), uw_cum, by = "time", all.time = TRUE)
 
 ggplot()+
-  geom_line(data = msu_merged, aes(x=time, y=score), color = 'blue')+
-  geom_line(data = uw_merged, aes(x=time, y=score), color = 'red')+
+  geom_line(data = msu_merged, aes(x=time, y=score), color = 'forestgreen')+
+  geom_line(data = uw_merged, aes(x=time, y=score), color = 'purple')+
   labs(title = "Cummulative Scores of MSU and UW vs Time", x = "Time", y = "Score") +
     theme_minimal()
 
