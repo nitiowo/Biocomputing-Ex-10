@@ -12,7 +12,7 @@ data <- read.table("UWvMSU_1-22-13.txt", header = TRUE)
 uwscore <- 0
 msuscore <- 0
 
-# Create a data frame to store the new information with cumulative scores of each team
+# create a data frame to store the new information with cumulative scores of each team
 cumulativescoredata <- data.frame(Time = numeric(nrow(data)),
                               Team = character(nrow(data)),
                               Score = numeric(nrow(data)),
@@ -32,11 +32,11 @@ for (i in 1:nrow(data)) {
     msuscore <- msuscore + score
   }
   
-  # Assign values to the rows in the data frame
+  # name the rows in the data frame
   cumulativescoredata[i, ] <- c(time, team, score, uwscore, msuscore)
 }
 
-# Assign names to the columns of the data frame
+# name the columns of the data frame
 colnames(cumulativescoredata) <- c("Time", "Team", "Score", "UW_Cumulative", "MSU_Cumulative")
 
 # Show the data saved with cumulative scores
@@ -46,15 +46,21 @@ print(cumulativescoredata)
 #open ggplot2
 library(ggplot2)
 
+# make time a numeric column
+cumulativescoredata$Time <- as.numeric(cumulativescoredata$Time)
+
+# convert score data columns into numeric columns
+cumulativescoredata$UW_Cumulative <- as.numeric(cumulativescoredata$UW_Cumulative)
+cumulativescoredata$MSU_Cumulative <- as.numeric(cumulativescoredata$MSU_Cumulative)
+
+# create a line graph to show the cumulative scores for both teams over time
 ggplot(cumulativescoredata, aes(x = Time)) +
-  geom_line(aes(y = UW_Cumulative, color = "UW"), size = 1) +
-  geom_line(aes(y = MSU_Cumulative, color = "MSU"), size = 1) +
-  labs(title = "Cumulative Scores of UW and MSU vs Time", x = "Time", y = "Cumulative Score") +
-  scale_color_manual(values = c("UW" = "blue", "MSU" = "red"), labels = c("UW", "MSU")) +
-  theme_minimal()
-
-
-
+  geom_line(aes(y = UW_Cumulative, color = "UW Score")) +
+  geom_line(aes(y = MSU_Cumulative, color = "MSU Score")) +
+  xlab("Time") +
+  ylab("Cumulative Score") +
+  scale_color_manual(values = c("UW Score" = "red", "MSU Score" = "darkgreen")) +
+  theme_classic()
 
 
 #2 Write a game called “guess my number”. The computer will generate a random number between 1 and 100. 
