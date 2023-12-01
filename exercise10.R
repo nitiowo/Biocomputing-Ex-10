@@ -2,7 +2,7 @@
 
 library(ggplot2)
 
-##1
+##Question 1
 df <- read.table('UWvMSU_1-22-13.txt', header = TRUE)
 # setting up MSU df
 msu_df <- df[df[,2] == "MSU",]
@@ -46,13 +46,13 @@ ggplot()+
 
 
 
-##2: Guess My Number
+##Question2: Guess My Number
 
 randint <- sample(1:100,1)
 print("I'm thinking of a number from 1-100..")
 
 
-while(1){
+for(i in 1:10){
   usr_guess <- strtoi(readline(prompt = "Guess:"))
   if (usr_guess < randint){
     print("Higher")
@@ -64,4 +64,8 @@ while(1){
     print("Correct!")
     break
   }
+}
+if (usr_guess != randint){
+  print(paste("You ran out of guesses. The correct answer was:", randint))
+  
 }
